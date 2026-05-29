@@ -126,17 +126,16 @@ def install_ollaman():
     print("\n" + "=" * 50)
     ch = input("是否安装 OllaMan 桌面客户端? (更美观的聊天界面) [Y/n]: ").strip().lower()
     if ch == "n": return
-    print("正在下载 OllaMan...")
-    dl = os.path.join(os.environ.get("USERPROFILE", ""), "Downloads")
-    ins = os.path.join(dl, "OllaMan_Setup.exe")
-    try:
-        ur.urlretrieve("https://ollaman.com/download/windows", ins)
-        print("下载完成，正在启动安装程序...")
-        subprocess.Popen([ins])
-        print("请按提示完成安装。启动后自动连接本机 Ollama。")
-    except Exception as e:
-        print(f"OllaMan 下载失败: {e}")
-        print("请手动访问 https://ollaman.com 下载。")
+    print("\n正在打开 OllaMan 下载页面...")
+    webbrowser.open("https://ollaman.com/download/windows")
+    print("浏览器已打开下载页面")
+    print("操作步骤:")
+    print("  1. 浏览器中点击 Download 按钮下载安装包")
+    print("  2. 如弹出 SmartScreen 警告, 点击'更多选项' -> '保留'")
+    print("  3. 双击运行 OllaMan_Setup.exe 完成安装")
+    print("  4. 启动 OllaMan, 自动连接本机 Ollama (127.0.0.1:11434)")
+    print("  5. 左侧模型列表中选择已下载的模型, 开始对话")
+    input("\n完成后按回车继续...")
 
 def main():
     print("=" * 50)
